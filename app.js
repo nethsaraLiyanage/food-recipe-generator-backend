@@ -27,14 +27,12 @@ app.use(helmet());
 
 
 //"mongodb://localhost:27017/{dbname}"
-/*mongoose.connect(configurationManager.connectionString, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
+mongoose.connect(configurationManager.connectionString);
 
 mongoose.connection.once("open", () => {
 	logger.info(" Connect Database....");
-});*/
+});
+
 if (app.get("env") === "development") {
 	app.use(morgan("tiny"));
 	startupDebugger("✨ Enabled Morgon......");
