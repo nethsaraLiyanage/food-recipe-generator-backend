@@ -47,13 +47,6 @@ const recipeSchema = new Schema({
 	
 });
 
-recipeSchema.methods.generateJwtToken = async function () {
-	const user = this;
-	const jwtSecret = process.env.jwtPrivateKey;
 
-	const token = jwt.sign({ _id: user._id }, jwtSecret);
-	user.token = token;
-	return token;
-};
 
 module.exports = User = mongoose.model("Recipe", recipeSchema);
