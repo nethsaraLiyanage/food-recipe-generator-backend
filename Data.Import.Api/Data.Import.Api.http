@@ -1,0 +1,6 @@
+@Data.Import.Api_HostAddress = http://localhost:5231
+
+GET {{Data.Import.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
