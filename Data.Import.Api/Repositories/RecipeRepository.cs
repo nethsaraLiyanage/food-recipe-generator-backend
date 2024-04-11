@@ -10,9 +10,9 @@ namespace Data.Import.Api.Repositories
         {
             this._context = context;
         }
-        public Task CreateRecipeAsync(Recipe product)
+        public async Task CreateRecipeAsync(Recipe recipe)
         {
-            throw new NotImplementedException();
+            await _context.Recipes.InsertOneAsync(recipe);
         }
 
         public Task<bool> DeleteRecipeAsync(string id)

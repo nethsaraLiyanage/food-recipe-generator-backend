@@ -8,8 +8,8 @@ namespace Data.Import.Api.Repositories
         Task<Recipe> GetRecipeByIdAsync(string id);
         Task<IEnumerable<Recipe>> GetRecipeByName(string name);
 
-        Task CreateRecipeAsync(Recipe product);
-        Task<bool> UpdateRecipeAsync(Recipe product);
+        Task CreateRecipeAsync(Recipe recipe);
+        Task<bool> UpdateRecipeAsync(Recipe recipe);
         Task<bool> DeleteRecipeAsync(string id);
     }
 }

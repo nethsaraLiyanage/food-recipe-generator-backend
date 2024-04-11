@@ -13,9 +13,11 @@ namespace Data.Import.Api.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger
+            )
         {
             _logger = logger;
+
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -29,5 +31,7 @@ namespace Data.Import.Api.Controllers
             })
             .ToArray();
         }
+
+
     }
 }

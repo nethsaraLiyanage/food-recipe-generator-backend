@@ -1,7 +1,9 @@
-﻿namespace Data.Import.Api.Services
+﻿using Data.Import.Api.DTOs;
+
+namespace Data.Import.Api.Services
 {
     public interface IRecipeDataMigrationService
     {
-        Task ExportToRecipeExcelDataToMongoDb();
+        Task<ResponseDTO> ExportToRecipeExcelDataToMongoDb();
     }
 }
