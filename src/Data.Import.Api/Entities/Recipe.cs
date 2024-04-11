@@ -8,15 +8,35 @@ namespace Data.Import.Api.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+
+        [BsonElement("name")]
         public string Name { get; set; }
+
+        [BsonElement("imageUrl")]
         public string ImageUrl { get; set; }
+
+        [BsonElement("rating")]
         public string Rating { get; set; }
+
+        [BsonElement("proteins")]
         public string Proteins { get; set; }
+
+        [BsonElement("fats")]
         public string Fats { get; set; }
+
+        [BsonElement("carbohydrates")]
         public string Carbohydrates { get; set; }
+
+        [BsonElement("ingredients")]
         public string Ingredients { get; set; }
+
+        [BsonElement("direction")]
         public string Direction { get; set; }
+
+        [BsonElement("calories")]
         public string Calories { get; set; }
+
+        [BsonElement("season")]
         public string Season { get; set; }
     }
 }

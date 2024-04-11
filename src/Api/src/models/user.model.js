@@ -3,13 +3,12 @@ const { Schema } = mongoose;
 const jwt = require("jsonwebtoken");
 
 const userSchema = new Schema({
-
 	fullName: {
 		type: String,
 		required: true,
 	},
 
-	phoneNumber:{
+	phoneNumber: {
 		type: String,
 		required: true,
 	},
@@ -24,8 +23,6 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 	},
-
-	
 });
 
 userSchema.methods.generateJwtToken = async function () {

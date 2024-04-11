@@ -3,50 +3,55 @@ const { Schema } = mongoose;
 const jwt = require("jsonwebtoken");
 
 const recipeSchema = new Schema({
-
 	name: {
 		type: String,
 		required: true,
 	},
 
-	imageUrl:{
+	imageUrl: {
 		type: String,
 		required: false,
 	},
 
-    rating:{
-        type: Number,
+	rating: {
+		type: Number,
 		required: false,
-    },
+	},
 
 	proteins: {
 		type: String,
 		required: false,
 	},
 
-    fats: {
+	fats: {
 		type: String,
 		required: false,
 	},
 
-    carbohydrates:{
-        type: String,
+	carbohydrates: {
+		type: String,
 		required: false,
-    },
+	},
 
-    ingredients:{
-        type: String,
+	ingredients: {
+		type: String,
 		required: false,
-    },
+	},
 
-    direction:{
-        type: String,
+	direction: {
+		type: String,
 		required: false,
-    }
+	},
 
-	
+	calories: {
+		type: String,
+		required: false,
+	},
+
+	season: {
+		type: String,
+		required: false,
+	},
 });
-
-
 
 module.exports = User = mongoose.model("Recipe", recipeSchema);
