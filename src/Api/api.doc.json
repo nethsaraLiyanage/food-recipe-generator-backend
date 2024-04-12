@@ -1,0 +1,30 @@
+{
+	"USER": {
+		"API": "user",
+		"Methods": [
+			{
+				"Method": "POST",
+				"URL": "http://localhost:4000/api/user",
+				"Request_Body": {
+					"firstName": "",
+					"lastName": "",
+					"phoneNumber": "",
+					"password": ""
+				}
+			}
+		]
+	},
+	"Recipe": {
+		"API": "recipe",
+		"Methods": [
+			{
+				"Method": "POST",
+				"URL": "http://localhost:4000/api/recipe",
+				"Request_Body": {
+					"searchText": "",
+					"mealType": ""
+				}
+			}
+		]
+	}
+}

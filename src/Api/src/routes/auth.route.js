@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { saveUser } = require("../api/user.api");
+
+const { login } = require("../api/auth.api");
 
 
-router.post("/", saveUser);
+router.post("/", login);
 
 module.exports = router;

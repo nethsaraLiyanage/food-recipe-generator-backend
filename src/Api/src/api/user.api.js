@@ -4,13 +4,13 @@ const logger = require("../utils/logger");
 
 const saveUser = async (request, response) => {
 	try {
-		let { id, fullName, email, mobileNumber, password } = request.body;
+		let { id, fullName, email, phoneNumber, password } = request.body;
 
 		if (id == null) {
 			let user = new User({
 				fullName,
 				email,
-				mobileNumber,
+				phoneNumber,
 				password,
 			});
 
