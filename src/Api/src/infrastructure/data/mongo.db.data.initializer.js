@@ -1,6 +1,5 @@
 const Ingredient = require("../../models/ingredient.model");
 const logger = require("../../utils/logger");
-const mongoose = require("mongoose");
 
 const seedDatabase = async () => {
 	try {
@@ -8,7 +7,6 @@ const seedDatabase = async () => {
 	} catch (error) {
 		logger.error("Error seeding data:", error);
 	} finally {
-		//mongoose.disconnect();
 	}
 };
 
