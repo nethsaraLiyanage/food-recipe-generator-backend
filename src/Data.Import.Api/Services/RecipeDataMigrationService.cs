@@ -34,7 +34,7 @@ namespace Data.Import.Api.Services
 
                 _logger.LogInformation(recipeExcelFilePath ?? string.Empty);
 
-                if (recipeExcelFilePath is not null)
+                if (!string.IsNullOrEmpty(recipeExcelFilePath))
                 {
 
                     FileInfo fileInfo = new FileInfo(recipeExcelFilePath);
@@ -107,6 +107,7 @@ namespace Data.Import.Api.Services
                 }
                 else
                 {
+                    _logger.LogInformation("Excel File Cannot Find Please try again");
                     response.Message = "Excel File Cannot Find Please try again";
                     response.IsSuccess = false;
                 }
@@ -120,6 +121,7 @@ namespace Data.Import.Api.Services
                 _logger.LogError(ex.ToString());
                 throw;
             }
+
             _logger.LogInformation("Operation Finished");
             response.Message = "Operation Finished";
             response.IsSuccess = true;
@@ -131,7 +133,7 @@ namespace Data.Import.Api.Services
         {
             var outPutDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location);
 
-            if (outPutDirectory == null) return "";
+            if (outPutDirectory is null) return string.Empty;
 
             return Path.Combine(outPutDirectory, filePath);
         }

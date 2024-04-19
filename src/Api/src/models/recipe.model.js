@@ -51,6 +51,17 @@ const recipeSchema = new Schema({
 		type: String,
 		required: false,
 	},
+
+	mealType: {
+		type: String,
+		required: false,
+	},
+
+	isSaved: {
+		type: Boolean,
+		default: false,
+		required: true,
+	},
 });
 
 module.exports = Recipe = mongoose.model("Recipe", recipeSchema);

@@ -1,4 +1,17 @@
 {
+	"AUTH": {
+		"API": "auth",
+		"Methods": [
+			{
+				"Method": "POST",
+				"URL": "http://localhost:4000/api/auth",
+				"Request_Body": {
+					"email": "",
+					"password": ""
+				}
+			}
+		]
+	},
 	"USER": {
 		"API": "user",
 		"Methods": [
@@ -14,7 +27,7 @@
 			}
 		]
 	},
-	"Recipe": {
+	"RECIPE": {
 		"API": "recipe",
 		"Methods": [
 			{
@@ -24,6 +37,18 @@
 					"searchText": "",
 					"mealType": ""
 				}
+			},
+			{
+				"Method": "PUT",
+				"URL": "http://localhost:4000/api/recipe/updateRecipesSaveStatus",
+				"Request_Body": {
+					"id": "",
+					"saveStatus": false
+				}
+			},
+			{
+				"Method": "GET",
+				"URL": "http://localhost:4000/api/recipe/getSavedRecipes"
 			}
 		]
 	}

@@ -1,11 +1,12 @@
 const Recipe = require("../models/recipe.model");
 const logger = require("../utils/logger");
+const Ingredient = require("../models/ingredient.model");
 
 const getRecipesByFilter = async (request, response) => {
 	try {
 		let { searchText, mealType } = request.body;
 
-        logger.info(request.body)
+		logger.info(request.body);
 		let listOfRecipeDetailDTO = [];
 		let query = {};
 
@@ -14,11 +15,11 @@ const getRecipesByFilter = async (request, response) => {
 		}
 
 		if (mealType) {
-			//need more info  client
+			query.mealType = mealType;
 		}
 
 		let listOfRecipes = await Recipe.find(query).exec();
-       
+
 		listOfRecipes.forEach((recipe) => {
 			listOfRecipeDetailDTO.push({
 				name: recipe.name ?? "",
@@ -40,6 +41,75 @@ const getRecipesByFilter = async (request, response) => {
 	}
 };
 
+const updateRecipesSaveStatus = async (request, response) => {
+	try {
+		let { id, saveStatus } = request.body;
+
+		await Recipe.findByIdAndUpdate(id, {
+			isSaved: saveStatus,
+		});
+
+		response.json({
+			isSuccess: true,
+			message: "Recipe Save Status updated Successfully",
+		});
+	} catch (error) {
+		logger.error(error);
+		response.json({
+			isSuccess: false,
+			message: "Error has been ocurred please try again ",
+		});
+	}
+};
+
+const getSavedRecipes = async (request, response) => {
+	try {
+		let listOfRecipeDetailDTO = [];
+
+		let listOfRecipes = await Recipe.find({ isSaved: true }).exec();
+
+		listOfRecipes.forEach((recipe) => {
+			listOfRecipeDetailDTO.push({
+				name: recipe.name ?? "",
+				imageUrl: recipe.imageUrl ?? "",
+				rating: recipe.rating ?? "",
+				proteins: recipe.proteins ?? "",
+				fats: recipe.fats ?? "",
+				carbohydrates: recipe.carbohydrates ?? "",
+				ingredients: recipe.ingredients ?? "",
+				direction: recipe.direction ?? "",
+				calories: recipe.calories ?? "",
+				season: recipe.season ?? "",
+			});
+		});
+
+		response.json(listOfRecipeDetailDTO);
+	} catch (error) {
+		logger.error(error);
+	}
+};
+
+const getIngredientMasterData = async (request, response) => {
+	try {
+		let listOfIngredients = [];
+		let ingredients = await Ingredient.find().exec();
+
+		ingredients.forEach((ingredient) => {
+			listOfIngredients.push({
+				id: ingredient._id,
+				name: ingredient.name,
+			});
+		});
+
+		response.json(listOfIngredients);
+	} catch (error) {
+		logger.error(error);
+	}
+};
+
 module.exports = {
 	getRecipesByFilter,
+	updateRecipesSaveStatus,
+	getSavedRecipes,
+	getIngredientMasterData,
 };

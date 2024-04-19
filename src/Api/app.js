@@ -10,6 +10,7 @@ const morgan = require("morgan");
 const startupDebugger = require("debug")("app:startup");
 const dbDebugger = require("debug")("app:db");
 const logger = require("./src/utils/logger");
+const { seedDatabase } = require("./src/infrastructure/data/mongo.db.data.initializer");
 //Create the Express App
 const app = express();
 
@@ -45,7 +46,7 @@ app.get("/", (request, response) => {
 });
 
 const port = process.env.PORT || 4000;
-
+seedDatabase();
 app.listen(port, () => {
 	logger.info(`Web API Development: ${port}`);
 });
