@@ -1,6 +1,7 @@
 const Recipe = require("../models/recipe.model");
 const logger = require("../utils/logger");
 const Ingredient = require("../models/ingredient.model");
+const { toRecipeDTO } = require("../utils/mapper/recipe.mapper");
 
 const getRecipesByFilter = async (request, response) => {
 	try {
@@ -21,18 +22,7 @@ const getRecipesByFilter = async (request, response) => {
 		let listOfRecipes = await Recipe.find(query).exec();
 
 		listOfRecipes.forEach((recipe) => {
-			listOfRecipeDetailDTO.push({
-				name: recipe.name ?? "",
-				imageUrl: recipe.imageUrl ?? "",
-				rating: recipe.rating ?? "",
-				proteins: recipe.proteins ?? "",
-				fats: recipe.fats ?? "",
-				carbohydrates: recipe.carbohydrates ?? "",
-				ingredients: recipe.ingredients ?? "",
-				direction: recipe.direction ?? "",
-				calories: recipe.calories ?? "",
-				season: recipe.season ?? "",
-			});
+			listOfRecipeDetailDTO.push(toRecipeDTO(recipe));
 		});
 
 		response.json(listOfRecipeDetailDTO);
@@ -69,18 +59,7 @@ const getSavedRecipes = async (request, response) => {
 		let listOfRecipes = await Recipe.find({ isSaved: true }).exec();
 
 		listOfRecipes.forEach((recipe) => {
-			listOfRecipeDetailDTO.push({
-				name: recipe.name ?? "",
-				imageUrl: recipe.imageUrl ?? "",
-				rating: recipe.rating ?? "",
-				proteins: recipe.proteins ?? "",
-				fats: recipe.fats ?? "",
-				carbohydrates: recipe.carbohydrates ?? "",
-				ingredients: recipe.ingredients ?? "",
-				direction: recipe.direction ?? "",
-				calories: recipe.calories ?? "",
-				season: recipe.season ?? "",
-			});
+			listOfRecipeDetailDTO.push(toRecipeDTO(recipe));
 		});
 
 		response.json(listOfRecipeDetailDTO);

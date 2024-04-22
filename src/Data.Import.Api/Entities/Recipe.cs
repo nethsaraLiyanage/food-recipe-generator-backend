@@ -38,5 +38,14 @@ namespace Data.Import.Api.Entities
 
         [BsonElement("season")]
         public string Season { get; set; }
+
+        [BsonElement("mealType")]
+        public string MealType { get; set; }
+
+        [BsonElement("preparationTime")]
+        public string PreparationTime { get; set; }
+
+        [BsonElement("cookingTime")]
+        public string CookingTime { get; set; }
     }
 }

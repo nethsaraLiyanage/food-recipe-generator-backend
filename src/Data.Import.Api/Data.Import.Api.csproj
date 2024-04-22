@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ExcelData\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="ExcelData\Recipe.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

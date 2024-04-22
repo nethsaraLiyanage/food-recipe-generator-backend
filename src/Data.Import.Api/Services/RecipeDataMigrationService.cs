@@ -30,7 +30,10 @@ namespace Data.Import.Api.Services
             {
                 _logger.LogInformation("Start");
 
-                var recipeExcelFilePath = GetExcelFilePath(_configuration.GetValue<string>("ExcelFilePaths:RecipeExcelFilePath") ?? string.Empty);
+                var recipeExcelFilePath = GetExcelFilePath
+                    (
+                    _configuration.GetValue<string>("ExcelFilePaths:RecipeExcelFilePath") ?? string.Empty
+                    );
 
                 _logger.LogInformation(recipeExcelFilePath ?? string.Empty);
 
@@ -60,7 +63,8 @@ namespace Data.Import.Api.Services
 
                                     if (col == 1)
                                     {
-                                        var ingredients = worksheet.Cells[row, col].Value == null ? string.Empty : worksheet.Cells[row, col].Value.ToString().Trim();
+                                        var ingredients = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                        : worksheet.Cells[row, col].Value.ToString().Trim();
 
                                         if (!string.IsNullOrEmpty(ingredients))
                                         {
@@ -69,7 +73,8 @@ namespace Data.Import.Api.Services
                                     }
                                     else if (col == 2)
                                     {
-                                        var recipeName = worksheet.Cells[row, col].Value == null ? string.Empty : worksheet.Cells[row, col].Value.ToString().Trim();
+                                        var recipeName = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                       : worksheet.Cells[row, col].Value.ToString().Trim();
 
                                         if (!string.IsNullOrEmpty(recipeName))
                                         {
@@ -78,7 +83,8 @@ namespace Data.Import.Api.Services
                                     }
                                     else if (col == 3)
                                     {
-                                        var calories = worksheet.Cells[row, col].Value == null ? string.Empty : worksheet.Cells[row, col].Value.ToString().Trim();
+                                        var calories = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                     : worksheet.Cells[row, col].Value.ToString().Trim();
 
                                         if (!string.IsNullOrEmpty(calories))
                                         {
@@ -88,11 +94,82 @@ namespace Data.Import.Api.Services
 
                                     else if (col == 4)
                                     {
-                                        var season = worksheet.Cells[row, col].Value == null ? string.Empty : worksheet.Cells[row, col].Value.ToString().Trim();
+                                        var season = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                   : worksheet.Cells[row, col].Value.ToString().Trim();
 
                                         if (!string.IsNullOrEmpty(season))
                                         {
                                             recipe.Season = season;
+                                        }
+                                    }
+                                    else if (col == 5)
+                                    {
+                                        var proteins = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                   : worksheet.Cells[row, col].Value.ToString().Trim();
+
+                                        if (!string.IsNullOrEmpty(proteins))
+                                        {
+                                            recipe.Proteins = proteins;
+                                        }
+                                    }
+                                    else if (col == 6)
+                                    {
+                                        var fats = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                   : worksheet.Cells[row, col].Value.ToString().Trim();
+
+                                        if (!string.IsNullOrEmpty(fats))
+                                        {
+                                            recipe.Fats = fats;
+                                        }
+                                    }
+                                    else if (col == 7)
+                                    {
+                                        var carbohydrates = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                   : worksheet.Cells[row, col].Value.ToString().Trim();
+
+                                        if (!string.IsNullOrEmpty(carbohydrates))
+                                        {
+                                            recipe.Carbohydrates = carbohydrates;
+                                        }
+                                    }
+                                    else if (col == 8)
+                                    {
+                                        var mealType = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                   : worksheet.Cells[row, col].Value.ToString().Trim();
+
+                                        if (!string.IsNullOrEmpty(mealType))
+                                        {
+                                            recipe.MealType = mealType;
+                                        }
+                                    }
+                                    else if (col == 9)
+                                    {
+                                        var preparationTime = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                   : worksheet.Cells[row, col].Value.ToString().Trim();
+
+                                        if (!string.IsNullOrEmpty(preparationTime))
+                                        {
+                                            recipe.PreparationTime = preparationTime;
+                                        }
+                                    }
+                                    else if (col == 10)
+                                    {
+                                        var cookingTime = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                   : worksheet.Cells[row, col].Value.ToString().Trim();
+
+                                        if (!string.IsNullOrEmpty(cookingTime))
+                                        {
+                                            recipe.CookingTime = cookingTime;
+                                        }
+                                    }
+                                    else if (col == 11)
+                                    {
+                                        var imageUrl = worksheet.Cells[row, col].Value == null ? string.Empty
+                                                   : worksheet.Cells[row, col].Value.ToString().Trim();
+
+                                        if (!string.IsNullOrEmpty(imageUrl))
+                                        {
+                                            recipe.ImageUrl = imageUrl;
                                         }
                                     }
                                 }
