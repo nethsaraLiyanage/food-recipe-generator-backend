@@ -11,6 +11,7 @@ const getRecipesByFilter = async (request, response) => {
 		let listOfRecipeDetailDTO = [];
 		let query = {};
 
+		// Construct the query based on search criteria
 		if (searchText) {
 			query.name = { $regex: new RegExp(searchText, "i") };
 		}
@@ -19,8 +20,10 @@ const getRecipesByFilter = async (request, response) => {
 			query.mealType = mealType;
 		}
 
+		// Retrieve recipes based on the constructed query
 		let listOfRecipes = await Recipe.find(query).exec();
 
+		// Convert each recipe to DTO format
 		listOfRecipes.forEach((recipe) => {
 			listOfRecipeDetailDTO.push(toRecipeDTO(recipe));
 		});
@@ -86,9 +89,35 @@ const getIngredientMasterData = async (request, response) => {
 	}
 };
 
+const getRecipesByIngredientsFilter = async (request, response) => {
+	try {
+		logger.info(request.body);
+		const { ingredients } = request.body;
+		let query = {};
+		let listOfRecipeDetailDTO = [];
+
+		if (ingredients && ingredients.length > 0) {
+			const listOfIngredients = ingredients.map((ingredient) => ingredient.toLowerCase().trim());
+			const ingredientsFilter = listOfIngredients.join("|");
+			query.ingredients = { $regex: new RegExp(ingredientsFilter, "i") };
+		}
+
+		const listOfRecipes = await Recipe.find(query).exec();
+
+		listOfRecipes.forEach((recipe) => {
+			listOfRecipeDetailDTO.push(toRecipeDTO(recipe));
+		});
+
+		response.json(listOfRecipeDetailDTO);
+	} catch (error) {
+		logger.error(error);
+	}
+};
+
 module.exports = {
 	getRecipesByFilter,
 	updateRecipesSaveStatus,
 	getSavedRecipes,
 	getIngredientMasterData,
+	getRecipesByIngredientsFilter,
 };

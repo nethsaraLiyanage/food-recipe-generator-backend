@@ -68,7 +68,7 @@ namespace Data.Import.Api.Services
 
                                         if (!string.IsNullOrEmpty(ingredients))
                                         {
-                                            recipe.Ingredients = ingredients;
+                                            recipe.Ingredients = ingredients.ToLower().Trim();
                                         }
                                     }
                                     else if (col == 2)
