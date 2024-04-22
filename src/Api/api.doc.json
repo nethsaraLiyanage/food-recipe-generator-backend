@@ -53,6 +53,13 @@
 			{
 				"Method": "GET",
 				"URL": "http://localhost:4000/api/recipe/getIngredientMasterData"
+			},
+			{
+				"Method": "POST",
+				"URL": "http://localhost:4000/api/recipe/getRecipesByIngredientsFilter",
+				"Request_Body": {
+					"ingredients": ["potatoes", "cup (grated for batter)"]
+				}
 			}
 		]
 	}
