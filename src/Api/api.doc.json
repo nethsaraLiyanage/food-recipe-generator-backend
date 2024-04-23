@@ -60,6 +60,13 @@
 				"Request_Body": {
 					"ingredients": ["potatoes", "cup (grated for batter)"]
 				}
+			},
+			{
+				"Method": "POST",
+				"URL": "http://localhost:4000/api/recipe/getRecipesBySeason",
+				"Request_Body": {
+					"season": "May - September (mango season)"
+				}
 			}
 		]
 	}

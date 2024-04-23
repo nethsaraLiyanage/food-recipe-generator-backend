@@ -114,10 +114,38 @@ const getRecipesByIngredientsFilter = async (request, response) => {
 	}
 };
 
+const getRecipesBySeason = async (request, response) => {
+	try {
+		let { season } = request.body;
+
+		let listOfRecipeDetailDTO = [];
+
+		let listOfYearAroundRecipes = await Recipe.find({ season: "Year-round" }).exec();
+
+		let listOfRecipes = await Recipe.find({ season: season }).exec();
+
+		logger.info(listOfRecipes);
+
+		listOfYearAroundRecipes.forEach((recipe) => {
+			listOfRecipeDetailDTO.push(toRecipeDTO(recipe));
+		});
+
+		listOfRecipes.forEach((recipe) => {
+			listOfRecipeDetailDTO.push(toRecipeDTO(recipe));
+		});
+
+		response.json(listOfRecipeDetailDTO);
+	} catch (error) {
+		logger.error(error);
+		response.json(error);
+	}
+};
+
 module.exports = {
 	getRecipesByFilter,
 	updateRecipesSaveStatus,
 	getSavedRecipes,
 	getIngredientMasterData,
 	getRecipesByIngredientsFilter,
+	getRecipesBySeason,
 };

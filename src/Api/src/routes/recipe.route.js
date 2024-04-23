@@ -8,6 +8,7 @@ const {
 	getSavedRecipes,
 	getIngredientMasterData,
 	getRecipesByIngredientsFilter,
+	getRecipesBySeason,
 } = require("../api/recipe.api");
 
 /**
@@ -44,5 +45,12 @@ router.get("/getIngredientMasterData", getIngredientMasterData);
  * @method POST
  */
 router.post("/getRecipesByIngredientsFilter", getRecipesByIngredientsFilter);
+
+/**
+ * @route POST /getRecipesBySeason
+ * @description Get recipes by Season
+ * @method POST
+ */
+router.post("/getRecipesBySeason", getRecipesBySeason);
 
 module.exports = router;
