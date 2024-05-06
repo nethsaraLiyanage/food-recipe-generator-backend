@@ -45,7 +45,7 @@ app.get("/", (request, response) => {
 	response.send("<h3>🖥️ Welcome API Documentation</h3>");
 });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8000;
 seedDatabase();
 app.listen(port, () => {
 	logger.info(`Web API Development: ${port}`);
