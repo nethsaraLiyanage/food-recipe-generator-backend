@@ -24,6 +24,16 @@
 					"phoneNumber": "",
 					"password": ""
 				}
+			},
+			{
+				"Method": "POST",
+				"URL": "http://localhost:4000/api/user/saveUserQuestion",
+				"Request_Body": {
+					"id": "",
+					"questionOneAnswer": false,
+					"questionTwoAnswer": "",
+					"questionThreeAnswer": ""
+				}
 			}
 		]
 	},
