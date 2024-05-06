@@ -172,7 +172,12 @@ namespace Data.Import.Api.Services
                                             recipe.ImageUrl = imageUrl;
                                         }
                                     }
+
+
                                 }
+
+                                recipe.IsSaved = false;
+
 
                                 await _recipeRepository.CreateRecipeAsync(recipe);
 

@@ -42,10 +42,17 @@ namespace Data.Import.Api.Entities
         [BsonElement("mealType")]
         public string MealType { get; set; }
 
+        [BsonElement("isSaved")]
+        public bool IsSaved { get; set; } = false;
+
         [BsonElement("preparationTime")]
         public string PreparationTime { get; set; }
 
         [BsonElement("cookingTime")]
         public string CookingTime { get; set; }
+
+
+
+
     }
 }

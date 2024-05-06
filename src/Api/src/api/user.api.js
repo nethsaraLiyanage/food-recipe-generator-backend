@@ -45,6 +45,29 @@ const saveUser = async (request, response) => {
 	}
 };
 
+const saveUserQuestion = async (request, response) => {
+	try {
+		let { id, questionOneAnswer, questionTwoAnswer, questionThreeAnswer } = request.body;
+
+		await User.findByIdAndUpdate(id, {
+			questionOneAnswer,
+			questionTwoAnswer,
+			questionThreeAnswer,
+		});
+
+		response.json({
+			isSuccess: true,
+			message: "Questions has been  Update SuccessFully",
+		});
+	} catch (error) {
+		response.json({
+			isSuccess: false,
+			message: "Error has been ocurred please try again",
+		});
+	}
+};
+
 module.exports = {
 	saveUser,
+	saveUserQuestion,
 };

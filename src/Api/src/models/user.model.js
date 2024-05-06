@@ -23,6 +23,24 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 	},
+
+	questionOneAnswer: {
+		type: Boolean,
+		default: false,
+		required: true,
+	},
+
+	questionTwoAnswer: {
+		type: String,
+		default: false,
+		required: true,
+	},
+
+	questionThreeAnswer: {
+		type: String,
+		default: false,
+		required: true,
+	},
 });
 
 userSchema.methods.generateJwtToken = async function () {
