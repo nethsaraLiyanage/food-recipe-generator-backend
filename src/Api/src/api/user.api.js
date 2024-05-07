@@ -18,7 +18,7 @@ const saveUser = async (request, response) => {
 			user.password = await bcrypt.hash(user.password, salt);
 			let newUser = await user.save();
 
-			response.json({ isSuccess: true, message: "User has been save Successfully" });
+			response.json({ isSuccess: true, userId: newUser._id, message: "User has been save Successfully" });
 		} else {
 			const isUserAvailable = await User.findById(id);
 
@@ -29,7 +29,7 @@ const saveUser = async (request, response) => {
 				});
 			}
 
-			await User.findByIdAndUpdate(id, {
+			let updatedUser = await User.findByIdAndUpdate(id, {
 				fullName,
 				email,
 				mobileNumber,
@@ -37,13 +37,18 @@ const saveUser = async (request, response) => {
 
 			response.json({
 				isSuccess: true,
+				userId: updatedUser._id,
 				message: "User has been  Update SuccessFully",
 				status: 200,
 			});
 		}
 	} catch (error) {
 		logger.error(error);
-		response.json(error);
+		response.json({
+			isSuccess: false,
+			message: "Errors has been ocurred please try  again",
+			status: 500,
+		});
 	}
 };
 
