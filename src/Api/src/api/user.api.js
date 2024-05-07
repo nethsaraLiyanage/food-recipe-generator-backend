@@ -38,6 +38,7 @@ const saveUser = async (request, response) => {
 			response.json({
 				isSuccess: true,
 				message: "User has been  Update SuccessFully",
+				status: 200
 			});
 		}
 	} catch (error) {

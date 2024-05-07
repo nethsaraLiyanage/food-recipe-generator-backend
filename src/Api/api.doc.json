@@ -19,7 +19,7 @@
 				"Method": "POST",
 				"URL": "http://localhost:4000/api/user",
 				"Request_Body": {
-					"fullName": "",
+					"firstName": "",
 					"email": "",
 					"phoneNumber": "",
 					"password": ""
