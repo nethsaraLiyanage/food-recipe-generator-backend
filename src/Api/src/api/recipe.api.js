@@ -91,7 +91,6 @@ const getIngredientMasterData = async (request, response) => {
 
 const getRecipesByIngredientsFilter = async (request, response) => {
 	try {
-		console.log(request.body);
 		const { ingredients } = request.body;
 		let query = {};
 		let listOfRecipeDetailDTO = [];

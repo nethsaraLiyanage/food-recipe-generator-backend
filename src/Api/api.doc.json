@@ -4,7 +4,7 @@
 		"Methods": [
 			{
 				"Method": "POST",
-				"URL": "http://localhost:4000/api/auth",
+				"URL": "http://localhost:8000/api/auth",
 				"Request_Body": {
 					"email": "",
 					"password": ""
@@ -17,7 +17,7 @@
 		"Methods": [
 			{
 				"Method": "POST",
-				"URL": "http://localhost:4000/api/user",
+				"URL": "http://localhost:8000/api/user",
 				"Request_Body": {
 					"firstName": "",
 					"email": "",
@@ -27,7 +27,7 @@
 			},
 			{
 				"Method": "POST",
-				"URL": "http://localhost:4000/api/user/saveUserQuestion",
+				"URL": "http://localhost:8000/api/user/saveUserQuestion",
 				"Request_Body": {
 					"id": "",
 					"questionOneAnswer": false,
@@ -42,7 +42,7 @@
 		"Methods": [
 			{
 				"Method": "POST",
-				"URL": "http://localhost:4000/api/recipe",
+				"URL": "http://localhost:8000/api/recipe",
 				"Request_Body": {
 					"searchText": "",
 					"mealType": ""
@@ -50,7 +50,7 @@
 			},
 			{
 				"Method": "PUT",
-				"URL": "http://localhost:4000/api/recipe/updateRecipesSaveStatus",
+				"URL": "http://localhost:8000/api/recipe/updateRecipesSaveStatus",
 				"Request_Body": {
 					"id": "",
 					"saveStatus": false
@@ -58,24 +58,39 @@
 			},
 			{
 				"Method": "GET",
-				"URL": "http://localhost:4000/api/recipe/getSavedRecipes"
+				"URL": "http://localhost:8000/api/recipe/getSavedRecipes"
 			},
 			{
 				"Method": "GET",
-				"URL": "http://localhost:4000/api/recipe/getIngredientMasterData"
+				"URL": "http://localhost:8000/api/recipe/getIngredientMasterData"
 			},
 			{
 				"Method": "POST",
-				"URL": "http://localhost:4000/api/recipe/getRecipesByIngredientsFilter",
+				"URL": "http://localhost:8000/api/recipe/getRecipesByIngredientsFilter",
 				"Request_Body": {
 					"ingredients": ["potatoes", "cup (grated for batter)"]
 				}
 			},
 			{
 				"Method": "POST",
-				"URL": "http://localhost:4000/api/recipe/getRecipesBySeason",
+				"URL": "http://localhost:8000/api/recipe/getRecipesBySeason",
 				"Request_Body": {
 					"season": "May - September (mango season)"
+				}
+			}
+		]
+	},
+	"FEEDBACK": {
+		"API": "feedBack",
+		"Methods": [
+			{
+				"Method": "POST",
+				"URL": " http://localhost:8000/api/feedback/saveFeedBack",
+				"Request_Body": {
+					"statisfaction": "happy",
+					"isThereAreAnyLeftOvers": false,
+					"createdUserId": "6619365884a55f31ed29251e",
+					"recipeId": "663a3093926bff6a35fb6a2f"
 				}
 			}
 		]

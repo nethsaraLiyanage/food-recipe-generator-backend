@@ -28,6 +28,7 @@ app.use(helmet());
 app.use("/api/auth", require("./src/routes/auth.route"));
 app.use("/api/recipe", require("./src/routes/recipe.route"));
 app.use("/api/user", require("./src/routes/user.route"));
+app.use("/api/feedback", require("./src/routes/feedback.route"));
 
 //"mongodb://localhost:27017/RecipeApp"
 mongoose.connect(configurationManager.connectionString);

@@ -16,7 +16,7 @@ const saveUser = async (request, response) => {
 
 			const salt = await bcrypt.genSalt(10);
 			user.password = await bcrypt.hash(user.password, salt);
-			await user.save();
+			let newUser = await user.save();
 
 			response.json({ isSuccess: true, message: "User has been save Successfully" });
 		} else {
@@ -38,10 +38,11 @@ const saveUser = async (request, response) => {
 			response.json({
 				isSuccess: true,
 				message: "User has been  Update SuccessFully",
-				status: 200
+				status: 200,
 			});
 		}
 	} catch (error) {
+		logger.error(error);
 		response.json(error);
 	}
 };
@@ -61,6 +62,7 @@ const saveUserQuestion = async (request, response) => {
 			message: "Questions has been  Update SuccessFully",
 		});
 	} catch (error) {
+		logger.error(error);
 		response.json({
 			isSuccess: false,
 			message: "Error has been ocurred please try again",
