@@ -96,7 +96,7 @@ const getRecipesByIngredientsFilter = async (request, response) => {
 		let listOfRecipeDetailDTO = [];
 
 		let validatedIngredients = ingredients.filter((x) => x != "");
-		console.log(validatedIngredients);
+
 		if (validatedIngredients && validatedIngredients.length > 0) {
 			const listOfIngredients = validatedIngredients.map((ingredient) => ingredient.toLowerCase().trim());
 			const ingredientsFilter = listOfIngredients.join("|");
