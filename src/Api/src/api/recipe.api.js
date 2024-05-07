@@ -95,8 +95,10 @@ const getRecipesByIngredientsFilter = async (request, response) => {
 		let query = {};
 		let listOfRecipeDetailDTO = [];
 
-		if (ingredients && ingredients.length > 0) {
-			const listOfIngredients = ingredients.map((ingredient) => ingredient.toLowerCase().trim());
+		let validatedIngredients = ingredients.filter((x) => x != "");
+		console.log(validatedIngredients);
+		if (validatedIngredients && validatedIngredients.length > 0) {
+			const listOfIngredients = validatedIngredients.map((ingredient) => ingredient.toLowerCase().trim());
 			const ingredientsFilter = listOfIngredients.join("|");
 			query.ingredients = { $regex: new RegExp(ingredientsFilter, "i") };
 		}
