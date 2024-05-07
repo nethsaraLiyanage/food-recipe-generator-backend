@@ -31,7 +31,8 @@ const login = async (request, response) => {
 				userName: user.firstName,
 			};
 
-			response.header("Bearer", token).json(currentUserModel).send();
+			response.header("Bearer", token).json({ status: 200, user: currentUserModel }).send();
+			
 		}
 	} catch (error) {
 		logger.error(error);
