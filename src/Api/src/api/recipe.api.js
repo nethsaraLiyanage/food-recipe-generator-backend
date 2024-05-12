@@ -43,12 +43,14 @@ const updateRecipesSaveStatus = async (request, response) => {
 		});
 
 		response.json({
+			status: 200,
 			isSuccess: true,
 			message: "Recipe Save Status updated Successfully",
 		});
 	} catch (error) {
 		logger.error(error);
 		response.json({
+			status: 401,
 			isSuccess: false,
 			message: "Error has been ocurred please try again ",
 		});
@@ -65,7 +67,7 @@ const getSavedRecipes = async (request, response) => {
 			listOfRecipeDetailDTO.push(toRecipeDTO(recipe));
 		});
 
-		response.json(listOfRecipeDetailDTO);
+		response.json(listOfRecipeDetailDTO); 
 	} catch (error) {
 		logger.error(error);
 	}
